@@ -1,11 +1,14 @@
+import { useNavigation } from '@react-navigation/native';
 import React,{useEffect} from 'react';
 import { View, Text, TextInput, TouchableOpacity, Image } from 'react-native';
+import { ScreenNameHomeDetailsScreen } from '../../RouteStack/ScreenNames';
 import { deviceBasedDynamicDimension } from '../../Utils/ApplicationSpace';
 import style from './style';
 const Home = (props) => {
 
     const [hidden, setHidden] = React.useState(false);
     const [status, setstatus] = React.useState("");
+    const navigation = useNavigation()
 
     useEffect(() => {
         if (status === "Ready!") {
@@ -20,7 +23,7 @@ const Home = (props) => {
                 {
                     hidden == true &&
                     <TouchableOpacity style={style.imageView} onPress={() => {
-                        //  Start Loading Another SCreen here
+                        navigation.navigate(ScreenNameHomeDetailsScreen)
                     }}>
                         <Image
                             height={deviceBasedDynamicDimension(50,false,1)}
